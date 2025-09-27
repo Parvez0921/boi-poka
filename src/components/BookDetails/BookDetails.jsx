@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { addToStoredData } from '../Utility/store';
 
 const BookDetails = () => {
     const { bookId } = useParams();
@@ -22,6 +23,9 @@ const BookDetails = () => {
         yearOfPublishing,
         rating,
     } = book;
+    const handleMarkedBook =id=>{
+        addToStoredData(id)
+    }
 
     return (
         <div className='hero min-h-screen bg-base-200'>
@@ -68,7 +72,7 @@ const BookDetails = () => {
                         </div>
                     </div>
 
-                    <button className='btn btn-outline'>Read</button>
+                    <button onClick={()=>handleMarkedBook(id)} className='btn btn-outline'>Mark as Read</button>
                     <button className='btn btn-primary m-4'>Wish List</button>
                 </div>
             </div>
